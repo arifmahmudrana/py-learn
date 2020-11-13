@@ -27,14 +27,17 @@ class Player:
         return num1 + num2
 
 
-class Vehicle():
+class Vehicle(Player):
     def run(self):
+        print(Player.run(self, 'asdasdas'))
+        print(super().run('asdasdasdas'))
         return 'Vehicle'
 
 # Inheritance from Vehicle, Player
 
 
-class Wizard(Vehicle, Player):
+# class Wizard(Vehicle, Player):
+class Wizard(Vehicle):
     pass
 
 
@@ -51,3 +54,17 @@ wiz = Wizard('asdas', 12121)
 print(wiz.run())
 print(isinstance(wiz, Player))
 print(isinstance(wiz, Vehicle))
+print(dir(wiz))
+
+
+class SuperList(list):
+    def __len__(self):
+        return 1000
+
+
+super_list = SuperList([1, 2, 3])
+print(super_list)
+print(len(super_list))
+super_list.append(2)
+print(super_list)
+print(len(super_list))
