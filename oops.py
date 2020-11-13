@@ -8,6 +8,8 @@ class Player:
         print(Player.membership)
         self.name = name
         self.age = age
+        # private property by convension
+        self._type = 'player'
 
     def run(self, hello):
         print('run')
@@ -25,6 +27,17 @@ class Player:
         return num1 + num2
 
 
+class Vehicle():
+    def run(self):
+        return 'Vehicle'
+
+# Inheritance from Vehicle, Player
+
+
+class Wizard(Vehicle, Player):
+    pass
+
+
 player1 = Player('Rana', 38)
 player1.attack = 50
 
@@ -33,3 +46,8 @@ print(player1.name)
 print(player1.age)
 print(player1.attack)
 print(player1.run('kidding me'))
+
+wiz = Wizard('asdas', 12121)
+print(wiz.run())
+print(isinstance(wiz, Player))
+print(isinstance(wiz, Vehicle))
