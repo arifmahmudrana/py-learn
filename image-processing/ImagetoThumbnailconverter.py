@@ -1,5 +1,5 @@
 """
-Usage: python3 JPGtoPNGconverter.py './Pokedex/**/*.jpg' 'x/x/c/v'
+Usage: python3 ImagetoThumbnailconverter.py './Pokedex/**/*.jpg' 'x/x/c/v'
 """
 
 import glob
