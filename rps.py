@@ -2,6 +2,7 @@ from random import randrange
 
 options = ['Rock', 'Paper', 'Scissor']
 
+
 def user_input():
     '''
     Loops until user selects a valid input
@@ -21,8 +22,8 @@ def user_input():
         try:
             user_input = int(user_selection)
             if user_input < 1 or user_input > 3:
-                 raise ValueError(f'Invalid input {user_input}')
-            
+                raise ValueError(f'Invalid input {user_input}')
+
             return user_input
         except ValueError:
             print(f'Invalid user input {user_selection} select from 1-3')
@@ -57,7 +58,7 @@ def find_winner(user_selection, computer_selection):
         return -1
 
     raise ValueError(f'Invalid state {user_selection} {computer_selection}')
-        
+
 
 def run():
     '''
@@ -83,16 +84,20 @@ def run():
             winner = find_winner(user_selection, computer_selection)
 
             if winner is 0:
-                print(f'Match drawn no body wins 😓️ you choose {options[user_selection - 1]} and computer choose {options[computer_selection - 1]}')
+                print(
+                    f'Match drawn no body wins 😓️ you choose {options[user_selection - 1]} and computer choose {options[computer_selection - 1]}')
             elif winner is 1:
-                print(f'Woow you won 😎️ you choose {options[user_selection - 1]} and computer choose {options[computer_selection - 1]}')
+                print(
+                    f'Woow you won 😎️ you choose {options[user_selection - 1]} and computer choose {options[computer_selection - 1]}')
                 user_won += 1
             elif winner is -1:
-                print(f'Hard luck you loose ☹️  you choose {options[user_selection - 1]} and computer choose {options[computer_selection - 1]}')
+                print(
+                    f'Hard luck you loose ☹️  you choose {options[user_selection - 1]} and computer choose {options[computer_selection - 1]}')
                 computer_won += 1
-                
+
         except ValueError:
-            print(f'Unpredictable result {user_selection} {computer_selection}')
+            print(
+                f'Unpredictable result {user_selection} {computer_selection}')
             print_result(user_won, computer_won)
             break
 
