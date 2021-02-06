@@ -1,4 +1,3 @@
-import sys
 from random import randrange
 
 options = ['Rock', 'Paper', 'Scissor']
@@ -9,7 +8,7 @@ def user_input():
     exits from program if user inputs q
 
     :return: user selection
-    :rtype: int
+    :rtype: int | str
     '''
     while True:
         user_selection = input('''Please select any one from below Press q for quit
@@ -17,8 +16,8 @@ def user_input():
 2. Paper
 3. Scissor
 >> ''')
-        if user_selection is 'q':
-            sys.exit(0)
+        if user_selection.lower() == 'q':
+            return 'q'
         try:
             user_input = int(user_selection)
             if user_input < 1 or user_input > 3:
@@ -64,9 +63,22 @@ def run():
     '''
     Runs the program and finds the winner
     '''
+    user_won = 0
+    computer_won = 0
     while True:
         computer_selection = randrange(3) + 1
-        user_selection = user_input()
+        user_selection = None
+        add_extra = ''
+        try:
+            user_selection = user_input()
+        except EOFError:
+            user_selection = 'q'
+            add_extra = '\n'
+
+        if user_selection == 'q':
+            print_result(user_won, computer_won, add_extra)
+            break
+
         try:
             winner = find_winner(user_selection, computer_selection)
 
@@ -74,12 +86,19 @@ def run():
                 print(f'Match drawn no body wins 😓️ you choose {options[user_selection - 1]} and computer choose {options[computer_selection - 1]}')
             elif winner is 1:
                 print(f'Woow you won 😎️ you choose {options[user_selection - 1]} and computer choose {options[computer_selection - 1]}')
+                user_won += 1
             elif winner is -1:
                 print(f'Hard luck you loose ☹️  you choose {options[user_selection - 1]} and computer choose {options[computer_selection - 1]}')
+                computer_won += 1
                 
         except ValueError:
             print(f'Unpredictable result {user_selection} {computer_selection}')
+            print_result(user_won, computer_won)
             break
+
+
+def print_result(user, computer, add_extra=''):
+    print(f'{add_extra}User won {user} and computer won {computer}')
 
 
 if __name__ == '__main__':
