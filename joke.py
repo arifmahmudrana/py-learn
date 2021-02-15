@@ -16,7 +16,8 @@ class Joke:
         self.save_joke_data(self.search_joke())
         self.print(self.get_text())
 
-    def print_intro(self):
+    @staticmethod
+    def print_intro():
         cprint(Figlet().renderText('Dad Joke 3000'),
                random.choice(tuple(COLORS.keys())), attrs=['blink'])
 
@@ -42,7 +43,8 @@ class Joke:
 
         return f"I've got {self.total_jokes} jokes about {self.topic}. Here's one: \n{self.joke}"
 
-    def print(self, text):
+    @staticmethod
+    def print(text):
         print(text)
 
 
