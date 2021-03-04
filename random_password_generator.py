@@ -9,7 +9,7 @@ charset = [ascii_uppercase, ascii_lowercase, punctuation, digits]
 
 shuffle(charset)
 
-first = [choice(charset[0]) for _ in range(randint(1, 6))]
+first = [choice(charset[0]) for _ in range(randint(1, pass_length - 3))]
 
 second = [choice(charset[1])
           for _ in range(randint(1, pass_length - len(first) - 2))]
